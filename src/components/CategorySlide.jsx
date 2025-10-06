@@ -15,8 +15,8 @@ const CategorySlide = () => {
         <SwiperSlide className="swiperSlide2">All</SwiperSlide>
         <SwiperSlide className="swiperSlide2">Combos</SwiperSlide>
         <SwiperSlide className="swiperSlide2">Pizza</SwiperSlide>
-        <SwiperSlide className="swiperSlide2">Slide 3</SwiperSlide>
-        <SwiperSlide className="swiperSlide2">Slide 3</SwiperSlide>
+        <SwiperSlide className="swiperSlide2">Burgers</SwiperSlide>
+        <SwiperSlide className="swiperSlide2">Lavash</SwiperSlide>
       </Swiper>
     </>
   );

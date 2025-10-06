@@ -6,6 +6,7 @@ import Filter from "../components/Filter";
 import AdsSlider from "../components/AdsSlider";
 import BottomBar from "../components/BottomBar";
 import CategorySlide from "../components/CategorySlide";
+import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
   return (
@@ -25,6 +26,24 @@ const HomePage = () => {
         </Box>
         <AdsSlider />
         <CategorySlide />
+        <Box
+          sx={{
+            marginTop: "30px",
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
+        >
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </Box>
       </Container>
 
       <Box
