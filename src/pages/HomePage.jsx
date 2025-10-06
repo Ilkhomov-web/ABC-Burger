@@ -1,11 +1,45 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Container } from "@mui/material";
+import MenuAppBar from "../components/AppBar";
+import Search from "../components/Search";
+import Filter from "../components/Filter";
+import AdsSlider from "../components/AdsSlider";
+import BottomBar from "../components/BottomBar";
+import CategorySlide from "../components/CategorySlide";
 
 const HomePage = () => {
   return (
     <Box>
-      <Typography variant="h5">HOME</Typography>
+      <Container maxWidth="lg">
+        <MenuAppBar />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "20px",
+            marginTop: "20px",
+          }}
+        >
+          <Search />
+          <Filter />
+        </Box>
+        <AdsSlider />
+        <CategorySlide />
+      </Container>
+
+      <Box
+        sx={{
+          width: "390px",
+          position: "fixed",
+          bottom: "0px",
+          borderBottomLeftRadius: "20px",
+          borderBottomRightRadius: "20px",
+          background: "#e53935",
+          zIndex: "1000",
+        }}
+      >
+        <BottomBar />
+      </Box>
     </Box>
   );
 };
