@@ -7,6 +7,7 @@ import AdsSlider from "../components/AdsSlider";
 import BottomBar from "../components/BottomBar";
 import CategorySlide from "../components/CategorySlide";
 import ProductCard from "../components/ProductCard";
+import { products } from "../data/products";
 
 const HomePage = () => {
   return (
@@ -35,14 +36,9 @@ const HomePage = () => {
             gap: "20px",
           }}
         >
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {products.map((item) => (
+            <ProductCard key={item.id} item={item} />
+          ))}
         </Box>
       </Container>
 

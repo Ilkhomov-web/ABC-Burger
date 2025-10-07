@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Splash from "./pages/Splash";
+import Product from "./pages/Product";
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/product/:id" element={<Product />} />
       </Routes>
     </div>
   );
