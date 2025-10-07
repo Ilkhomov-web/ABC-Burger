@@ -1,10 +1,13 @@
 import React from "react";
 import TuneIcon from "@mui/icons-material/Tune";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
-const Filter = () => {
+const Filter = (prop) => {
+  const { id, handleClick } = prop;
   return (
-    <Box
+    <Button
+      aria-describedby={id}
+      onClick={handleClick}
       sx={{
         width: "60px",
         height: "40px",
@@ -17,7 +20,7 @@ const Filter = () => {
       }}
     >
       <TuneIcon sx={{ color: "white" }} />
-    </Box>
+    </Button>
   );
 };
 

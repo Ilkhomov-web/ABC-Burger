@@ -8,7 +8,11 @@ const AppBar = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "15px 0px",
+        padding: "15px 22px",
+        position: "sticky",
+        top: "0",
+        background: "white",
+        zIndex: "100",
       }}
     >
       <Box>

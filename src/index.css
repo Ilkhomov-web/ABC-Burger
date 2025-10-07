@@ -26,6 +26,22 @@ body {
   flex-direction: column;
 }
 
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e53935;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a51f1c;
+}
+
 @media (max-width: 420px) {
   .app-container {
     width: 100%;

@@ -5,7 +5,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 
-const ProductCard = (prop) => {
+const ProductList = (prop) => {
   const { item } = prop;
   const [liked, setLiked] = useState(item.like || false);
 
@@ -21,57 +21,69 @@ const ProductCard = (prop) => {
     >
       <Box
         sx={{
-          width: "150px",
+          width: "340px",
           boxShadow: 3,
           padding: "10px",
           borderRadius: "10px",
           display: "flex",
           gap: "5px",
-          flexDirection: "column",
+          flexDirection: "row",
           cursor: "pointer",
         }}
       >
         <Box
           component={"img"}
-          width={"100%"}
+          width={"150px"}
           height={"100px"}
           src={item.img}
         ></Box>
-        <Typography fontWeight={"600"}>{item.name.slice(0, 12)}...</Typography>
-        <Typography>{item.price} so'm</Typography>
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "end",
+            flexDirection: "column",
+            gap: "10px",
+            paddingLeft: "10px",
+            justifyContent: "center",
           }}
         >
+          <Typography fontWeight={"600"}>
+            {item.name.slice(0, 12)}...
+          </Typography>
+          <Typography>{item.price} so'm</Typography>
           <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center",
-              gap: "3px",
+              alignItems: "end",
             }}
           >
-            <StarIcon sx={{ color: "gold" }} />
-            <Typography>{item.rating}</Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "3px",
+              }}
+            >
+              <StarIcon sx={{ color: "gold" }} />
+              <Typography>{item.rating}</Typography>
+            </Box>
+            {liked ? (
+              <FavoriteIcon
+                onClick={handleLike}
+                sx={{ color: "red", cursor: "pointer" }}
+              />
+            ) : (
+              <FavoriteBorderIcon
+                onClick={handleLike}
+                sx={{ color: "red", cursor: "pointer" }}
+              />
+            )}
           </Box>
-          {liked ? (
-            <FavoriteIcon
-              onClick={handleLike}
-              sx={{ color: "red", cursor: "pointer" }}
-            />
-          ) : (
-            <FavoriteBorderIcon
-              onClick={handleLike}
-              sx={{ color: "red", cursor: "pointer" }}
-            />
-          )}
         </Box>
       </Box>
     </Link>
   );
 };
 
-export default ProductCard;
+export default ProductList;

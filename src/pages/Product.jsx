@@ -11,8 +11,8 @@ const Product = () => {
   const product = products.find((item) => item.id.toString() === id);
   return (
     <Box>
+      <MenuAppBar />
       <Container maxWidth="lg">
-        <MenuAppBar />
         <hr style={{ border: "1px solid #e53935", marginBottom: "20px" }} />
         <Box
           component={"img"}
