@@ -1,11 +1,18 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Profile = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       <Box
         sx={{
           width: "100%",
@@ -49,6 +56,49 @@ const Profile = () => {
             boxShadow: "0px 0px 20px rgba(248, 3, 3, 0.81)",
           }}
         ></Box>
+      </Box>
+      <FormControl sx={{ width: "90%", margin: "80px auto", gap: "20px" }}>
+        <TextField label={"UserName"} />
+        <TextField label={"Email"} />
+        <TextField label={"Password"} />
+        <TextField label={"Delivery address"} />
+      </FormControl>
+
+      <hr style={{ width: "90%", margin: "0 auto" }} />
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          marginTop: "10px",
+        }}
+      >
+        <Button
+          sx={{
+            width: "90%",
+            margin: "0px auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "15px 20px",
+            color: "#808080",
+          }}
+        >
+          Payment Details <ChevronRightIcon />
+        </Button>
+        <Button
+          sx={{
+            width: "90%",
+            margin: "20px auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "15px 20px",
+            color: "#808080",
+          }}
+        >
+          Order history <ChevronRightIcon />
+        </Button>
       </Box>
     </Box>
   );
