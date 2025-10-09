@@ -1,9 +1,11 @@
 import { Avatar, Box, Button, Popover, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginIcon from "@mui/icons-material/Login";
 
 const AppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [isUser, setIsUser] = useState(false);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -35,7 +37,25 @@ const AppBar = () => {
           Order your favourite food!
         </Typography>
       </Box>
-      <Avatar sx={{ cursor: "pointer" }} onClick={handleClick} />
+      {(isUser && (
+        <Avatar sx={{ cursor: "pointer" }} onClick={handleClick} />
+      )) || (
+        <Link
+          to={"/login"}
+          style={{ textDecoration: "none", color: "currentcolor" }}
+        >
+          <Button
+            sx={{
+              background: "white",
+              border: "1px solid #EF2A39",
+              color: "#EF2A39",
+              boxShadow: "0px 0px 10px rgba(239, 42, 58, 0.27)",
+            }}
+          >
+            Login <LoginIcon />
+          </Button>
+        </Link>
+      )}
       <Popover
         id={id}
         open={open}
