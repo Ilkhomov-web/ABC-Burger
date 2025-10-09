@@ -100,6 +100,16 @@ const Profile = () => {
           Order history <ChevronRightIcon />
         </Button>
       </Box>
+      <Button
+        sx={{
+          width: "90%",
+          margin: "50px auto",
+          background: "#EF2A39",
+          color: "white",
+        }}
+      >
+        Save
+      </Button>
     </Box>
   );
 };
