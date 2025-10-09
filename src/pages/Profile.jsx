@@ -1,10 +1,30 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { supabase } from "../supabase/supaClient";
 
 const Profile = () => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    async function getUser() {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+    }
+    getUser();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  console.log(user);
+
   return (
     <Box
       sx={{
