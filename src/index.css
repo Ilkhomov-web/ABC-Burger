@@ -43,6 +43,12 @@ body {
 }
 
 @media (max-width: 420px) {
+  body {
+    display: block;
+    align-items: unset;
+    justify-content: unset;
+  }
+
   .app-container {
     width: 100%;
     height: 100vh;

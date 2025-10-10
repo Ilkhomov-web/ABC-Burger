@@ -29,6 +29,9 @@ const ProductCard = (prop) => {
           gap: "5px",
           flexDirection: "column",
           cursor: "pointer",
+          "@media (max-width: 350px)": {
+            width: "120px",
+          },
         }}
       >
         <Box
