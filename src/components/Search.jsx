@@ -2,7 +2,8 @@ import { Box, TextField } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Search = () => {
+const Search = (prop) => {
+  const { setSearchTerm, searchTerm } = prop;
   return (
     <Box
       sx={{
@@ -19,6 +20,8 @@ const Search = () => {
       <TextField
         placeholder="Search"
         variant="standard"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
         InputProps={{
           disableUnderline: true,
         }}

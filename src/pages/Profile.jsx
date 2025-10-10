@@ -6,21 +6,18 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { supabase } from "../supabase/supaClient";
 
 const Profile = () => {
+  const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
   useEffect(() => {
     async function getUser() {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user);
+      const { data, error } = await supabase.auth.getUser();
+
+      if (data?.user) {
+        setEmail(data.user.email);
+        setUser(data.user);
+      }
     }
     getUser();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_, session) => {
-      setUser(session?.user || null);
-    });
-
-    return () => subscription.unsubscribe();
   }, []);
 
   console.log(user);
@@ -79,8 +76,8 @@ const Profile = () => {
       </Box>
       <FormControl sx={{ width: "90%", margin: "80px auto", gap: "20px" }}>
         <TextField label={"UserName"} />
-        <TextField label={"Email"} />
-        <TextField label={"Password"} />
+        <TextField label={"Email"} value={email} />
+        <TextField label={"Password"} type="password" value={email} />
         <TextField label={"Delivery address"} />
       </FormControl>
 

@@ -3,7 +3,31 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/css";
 import "./style/category.css";
 
-const CategorySlide = () => {
+const categoryData = [
+  {
+    id: 1,
+    category: "All",
+  },
+  {
+    id: 2,
+    category: "Combos",
+  },
+  {
+    id: 3,
+    category: "Pizza",
+  },
+  {
+    id: 4,
+    category: "Burgers",
+  },
+  {
+    id: 5,
+    category: "Lavash",
+  },
+];
+
+const CategorySlide = (prop) => {
+  const { handleClickCategory } = prop;
   return (
     <>
       <Swiper
@@ -12,11 +36,15 @@ const CategorySlide = () => {
         centeredSlides={false}
         className="mySwiper"
       >
-        <SwiperSlide className="swiperSlide2">All</SwiperSlide>
-        <SwiperSlide className="swiperSlide2">Combos</SwiperSlide>
-        <SwiperSlide className="swiperSlide2">Pizza</SwiperSlide>
-        <SwiperSlide className="swiperSlide2">Burgers</SwiperSlide>
-        <SwiperSlide className="swiperSlide2">Lavash</SwiperSlide>
+        {categoryData.map((item) => (
+          <SwiperSlide
+            onClick={() => handleClickCategory(item.category)}
+            key={item.id}
+            className="swiperSlide2"
+          >
+            {item.category}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

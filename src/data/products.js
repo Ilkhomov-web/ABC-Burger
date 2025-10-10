@@ -8,7 +8,7 @@ export const products = [
       like: false,
       rating: 4.8,
       createAt: "2025-10-07 14:00:00",
-      category: "pizza",
+      category: "Pizza",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export const products = [
       like: false,
       rating: 4.6,
       createAt: "2025-10-07 14:00:00",
-      category: "burger",
+      category: "Burgers",
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ export const products = [
       like: false,
       rating: 4.7,
       createAt: "2025-10-07 14:00:00",
-      category: "lavash",
+      category: "Lavash",
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ export const products = [
       like: false,
       rating: 4.3,
       createAt: "2025-10-07 14:00:00",
-      category: "hotdog",
+      category: "Burgers",
     },
     {
       id: 5,
@@ -52,7 +52,7 @@ export const products = [
       like: false,
       rating: 4.5,
       createAt: "2025-10-07 14:00:00",
-      category: "sendwich",
+      category: "Combos",
     },
     {
       id: 6,
@@ -63,7 +63,7 @@ export const products = [
       like: false,
       rating: 4.9,
       createAt: "2025-10-07 14:00:00",
-      category: "pizza",
+      category: "Pizza",
     },
     {
       id: 7,
@@ -74,7 +74,7 @@ export const products = [
       like: false,
       rating: 4.8,
       createAt: "2025-10-07 14:00:00",
-      category: "burger",
+      category: "Combos",
     },
     {
       id: 8,
@@ -85,7 +85,7 @@ export const products = [
       like: false,
       rating: 4.2,
       createAt: "2025-10-07 14:00:00",
-      category: "lavash",
+      category: "Lavash",
     },
     {
       id: 9,
@@ -96,7 +96,7 @@ export const products = [
       like: false,
       rating: 4.4,
       createAt: "2025-10-07 14:00:00",
-      category: "hotdog",
+      category: "Burgers",
     },
     {
       id: 10,
@@ -107,7 +107,7 @@ export const products = [
       like: false,
       rating: 4.6,
       createAt: "2025-10-07 14:00:00",
-      category: "sendwich",
+      category: "Combos",
     },
   ];
   
