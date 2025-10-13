@@ -35,7 +35,7 @@ const ProductList = (prop) => {
           component={"img"}
           width={"150px"}
           height={"100px"}
-          src={item.img}
+          src={item.image_url}
         ></Box>
         <Box
           sx={{
