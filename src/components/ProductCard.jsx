@@ -35,12 +35,18 @@ const ProductCard = (prop) => {
           },
         }}
       >
-        <Box
+        <LazyLoadImage
+          alt={item.image_url}
+          height={"100px"}
+          src={item.image_url}
+          width={"100%"}
+        />
+        {/* <Box
           component={"img"}
           width={"100%"}
           height={"100px"}
           src={item.img}
-        ></Box>
+        ></Box> */}
         <Typography fontWeight={"600"}>{item.name.slice(0, 12)}...</Typography>
         <Typography>{item.price} so'm</Typography>
         <Box

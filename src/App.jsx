@@ -5,6 +5,7 @@ import Splash from "./pages/Splash";
 import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import AddProduct from "./pages/AddProduct";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
+        <Route path="add-product" element={<AddProduct />} />
       </Routes>
     </div>
   );

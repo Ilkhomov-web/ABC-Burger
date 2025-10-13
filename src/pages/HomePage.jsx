@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Box, Typography, Button, Container, Popover } from "@mui/material";
+import { Box, Typography, Container, Popover } from "@mui/material";
 import MenuAppBar from "../components/AppBar";
 import Search from "../components/Search";
 import Filter from "../components/Filter";
@@ -7,7 +7,6 @@ import AdsSlider from "../components/AdsSlider";
 import BottomBar from "../components/BottomBar";
 import CategorySlide from "../components/CategorySlide";
 import ProductCard from "../components/ProductCard";
-import { products } from "../data/products";
 import ProductList from "../components/ProductList";
 import { ThreeDot } from "react-loading-indicators";
 import { supabase } from "../supabase/supaClient";
@@ -21,62 +20,71 @@ function debounce(func, delay) {
 }
 
 const HomePage = () => {
-  const [product, setProduct] = useState(products);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [products, setProducts] = useState([]);
+  const [originalProducts, setOriginalProducts] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [isCardView, setIsCardView] = useState("card");
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+
+  async function getUser() {
+    const { data } = await supabase.auth.getUser();
+    if (!data.user) {
+      setTimeout(() => {
+        alert("Ro'yxatdan o'ting iltimos");
+      }, 2000);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchProducts() {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching products:", error);
+      } else {
+        setProducts(data);
+        setOriginalProducts(data);
+      }
+
+      setLoading(false);
+    }
+
+    fetchProducts();
+    getUser();
+  }, []);
 
   const debouncedSearch = useMemo(
     () =>
       debounce((query) => {
         if (!query) {
-          setProduct(products);
+          setProducts(originalProducts);
           return;
         }
-        const result = products.filter((item) =>
+        const result = originalProducts.filter((item) =>
           item.name.toLowerCase().includes(query.toLowerCase())
         );
-        setProduct(result);
+        setProducts(result);
       }, 600),
-    []
+    [originalProducts]
   );
 
   useEffect(() => {
     debouncedSearch(searchTerm);
-  }, [searchTerm]);
-
-  async function getUser() {
-    const { data, error } = await supabase.auth.getUser();
-
-    const getTime = setTimeout(() => {
-      if (!data.user) {
-        alert("Ro'yxatdan o'ting iltimos");
-      }
-    }, 2000);
-
-    getTime();
-  }
-
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setProduct(products);
-      setLoading(false);
-      getUser();
-    }, 1200);
-
-    return () => clearTimeout(timer);
-  }, []);
+  }, [searchTerm, debouncedSearch]);
 
   const handleClickCategory = (category) => {
-    if (category == "All") {
-      setProduct(products);
+    if (category === "All") {
+      setProducts(originalProducts);
     } else {
-      const filterProduct = products.filter(
-        (item) => item.category == category
+      const filtered = originalProducts.filter(
+        (item) => item.category === category
       );
-      setProduct(filterProduct);
+      setProducts(filtered);
     }
   };
 
@@ -174,7 +182,9 @@ const HomePage = () => {
             </Box>
           </Popover>
         </Box>
+
         <AdsSlider />
+
         <CategorySlide handleClickCategory={handleClickCategory} />
 
         <Box
@@ -186,11 +196,11 @@ const HomePage = () => {
             gap: "20px",
           }}
         >
-          {product.length > 0 ? (
+          {products.length > 0 ? (
             isCardView === "list" ? (
-              product.map((item) => <ProductList key={item.id} item={item} />)
+              products.map((item) => <ProductList key={item.id} item={item} />)
             ) : (
-              product.map((item) => <ProductCard key={item.id} item={item} />)
+              products.map((item) => <ProductCard key={item.id} item={item} />)
             )
           ) : (
             <Typography color="error">Hech narsa topilmadi</Typography>
