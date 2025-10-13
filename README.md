@@ -2,4 +2,6 @@
 
 ABC-Burger
 
-[My-App] - (/451shots_so.png), (/771shots_so.png)
+## 📱 My Mobile UI
+
+![My App](./public/451shots_so.png)
